@@ -27,15 +27,6 @@ public class RedBlackTree<T> {
         this.node = node;
     }
 
-    /**
-     * 构建红黑树
-     */
-    public void build(Collection<T> collection){
-        collection.stream().forEach(i->{
-            TreeNode node = new TreeNode(i);
-
-        });
-    }
 
     /**
      * 变色

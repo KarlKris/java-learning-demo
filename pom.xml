@@ -16,6 +16,8 @@
         <module>jvm</module>
         <module>utils</module>
         <module>algorithm</module>
+        <module>fsm</module>
+        <module>behaviortree</module>
     </modules>
 
     <properties>

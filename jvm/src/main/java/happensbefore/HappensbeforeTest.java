@@ -1,7 +1,5 @@
 package happensbefore;
 
-import lombok.Data;
-
 /**
  * @Description 先行发生原则测试
  * @Author li-yuanwen

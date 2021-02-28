@@ -1,6 +1,6 @@
-package com.li.starter.composite;
+package com.li.common.composite;
 
-import com.li.starter.behaviour.Behaviour;
+import com.li.common.behaviour.Behaviour;
 
 /**
  * 复合行为

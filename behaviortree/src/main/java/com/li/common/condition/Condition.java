@@ -1,6 +1,6 @@
-package com.li.starter.condition;
+package com.li.common.condition;
 
-import com.li.starter.behaviour.Behaviour;
+import com.li.common.behaviour.Behaviour;
 
 /**
  * 条件，另一种行为树叶子节点，是行为树查看游戏世界信息的主要途径。

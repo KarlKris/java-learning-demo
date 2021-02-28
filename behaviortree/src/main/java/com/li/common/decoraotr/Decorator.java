@@ -1,6 +1,6 @@
-package com.li.starter.decoraotr;
+package com.li.common.decoraotr;
 
-import com.li.starter.behaviour.Behaviour;
+import com.li.common.behaviour.Behaviour;
 
 /**
  *  装饰器

@@ -1,6 +1,6 @@
-package com.li.starter.action;
+package com.li.common.action;
 
-import com.li.starter.behaviour.Behaviour;
+import com.li.common.behaviour.Behaviour;
 
 /**
  * 抽象动作的概念，尝试改变游戏状态的样子行为被称为动作。

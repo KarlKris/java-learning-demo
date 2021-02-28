@@ -1,11 +1,16 @@
-package com.li.starter.behaviour;
+package com.li.common.behaviour;
 
-import com.li.starter.status.Status;
+import com.li.common.status.Status;
 
 /**
  * 抽象行为的概念,行为树的基石。该接口可以被激活，运行和注销.
  **/
 public interface Behaviour {
+
+    /**
+     * API调用契约
+     */
+    Status tick();
 
     /**
      * 在行为的更新方法即将被首次调用前调用

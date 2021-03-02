@@ -1,4 +1,4 @@
-package com.util;
+package com.utils;
 
 
 import com.model.RedBlackTreeNode;

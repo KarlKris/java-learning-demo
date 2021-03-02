@@ -1,6 +1,7 @@
 package com.sort;
 
-import com.util.ArrayPrintln;
+
+import common.ArrayUtils;
 
 //快速排序
 public class QuickSort {
@@ -55,9 +56,9 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] a = ArrayPrintln.randomArray();
-        ArrayPrintln.Array_Println(a);
-        ArrayPrintln.Array_Println(QuickSort.sort(a));
+        int[] a = ArrayUtils.randomArray(10);
+        ArrayUtils.Array_Println(a);
+        ArrayUtils.Array_Println(QuickSort.sort(a));
     }
 
 }

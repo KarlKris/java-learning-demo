@@ -1,6 +1,6 @@
 package com.sort;
 
-import com.util.ArrayPrintln;
+import common.ArrayUtils;
 
 //插入排序，类似于抽牌
 //时间复杂度O(n*n)
@@ -56,17 +56,17 @@ public class InsertionSort {
 
 
     public static void main(String[] args) {
-        int a[] = ArrayPrintln.randomArray();
-        ArrayPrintln.Array_Println(a);
+        int a[] = ArrayUtils.randomArray(50);
+        ArrayUtils.Array_Println(a);
 
         long startTime1 = System.nanoTime();
-        ArrayPrintln.Array_Println(newArray_Insertion_Sort(a));
+        ArrayUtils.Array_Println(newArray_Insertion_Sort(a));
         long endTime1 = System.nanoTime();
         //输出程序运行时间
         System.out.println("NewArray_Insertion_Sort(a)程序运行时间：" + (endTime1 - startTime1) + "ns");
 
         long startTime2 = System.nanoTime();
-        ArrayPrintln.Array_Println(localArray_Insertion_Sort(a));
+        ArrayUtils.Array_Println(localArray_Insertion_Sort(a));
         long endTime2 = System.nanoTime();
         //输出程序运行时间
         System.out.println("LocalArray_Insertion_Sort(a)程序运行时间：" + (endTime2 - startTime2) + "ns");

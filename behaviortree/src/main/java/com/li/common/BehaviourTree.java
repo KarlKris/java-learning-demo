@@ -9,6 +9,7 @@ import com.li.common.behaviour.Behaviour;
  **/
 public final class BehaviourTree {
 
+    /** 行为树根节点 **/
     private Behaviour root;
 
     BehaviourTree(Behaviour root) {

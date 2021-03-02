@@ -1,6 +1,7 @@
 package com.li.common.condition;
 
 import com.li.common.behaviour.Behaviour;
+import com.li.common.blackboard.BlackBoard;
 
 /**
  * 条件，另一种行为树叶子节点，是行为树查看游戏世界信息的主要途径。
@@ -10,5 +11,7 @@ public interface Condition extends Behaviour {
     /**
      * 条件是否满足
      **/
-    boolean valid();
+    boolean valid(BlackBoard board);
+
+
 }

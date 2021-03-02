@@ -1,6 +1,7 @@
 package com.sort;
 
-import com.util.ArrayPrintln;
+
+import common.ArrayUtils;
 
 //冒泡排序
 public class BubbleSort {
@@ -31,9 +32,9 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        int a[] = ArrayPrintln.randomArray();
-        ArrayPrintln.Array_Println(a);
-        ArrayPrintln.Array_Println(BubbleSort.bubbleSort(a));
+        int a[] = ArrayUtils.randomArray(10);
+        ArrayUtils.Array_Println(a);
+        ArrayUtils.Array_Println(BubbleSort.bubbleSort(a));
     }
 
 }

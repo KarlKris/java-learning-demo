@@ -6,11 +6,6 @@ package com.li.common.status;
 public enum Status {
 
     /**
-     * 初始状态
-     */
-    INIT,
-
-    /**
      * 完成状态
      **/
     SUCCESS,
@@ -19,6 +14,16 @@ public enum Status {
      * 正在执行
      **/
     RUNNING,
+
+    /**
+     * 失败
+     **/
+    FAILURE,
+
+    /**
+     * 非法状态
+     **/
+    INVALID,
 
     ;
 }

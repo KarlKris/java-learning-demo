@@ -26,4 +26,9 @@ public interface Behaviour {
      * 当刚刚更新的行为不再处于运行状态时，立即调用一次
      **/
     void onTerminate(Status status);
+
+    /**
+     * 添加子节点
+     **/
+    void addChild(Behaviour behaviour);
 }

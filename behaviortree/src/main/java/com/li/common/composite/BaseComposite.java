@@ -2,6 +2,7 @@ package com.li.common.composite;
 
 import com.li.common.behaviour.BaseBehaviour;
 import com.li.common.behaviour.Behaviour;
+import com.li.common.status.Status;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +15,16 @@ import java.util.List;
 public abstract class BaseComposite extends BaseBehaviour implements Composite {
 
     private List<Behaviour> children;
+
+    @Override
+    public void onInitialize() {
+
+    }
+
+    @Override
+    public void onTerminate(Status status) {
+
+    }
 
     @Override
     public void addChild(Behaviour behaviour) {

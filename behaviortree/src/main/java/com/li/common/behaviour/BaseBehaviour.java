@@ -1,5 +1,6 @@
 package com.li.common.behaviour;
 
+import com.li.common.blackboard.BlackBoard;
 import com.li.common.status.Status;
 
 /**
@@ -9,8 +10,10 @@ import com.li.common.status.Status;
  **/
 public abstract class BaseBehaviour implements Behaviour {
 
+    /** 状态 **/
     private Status status;
-
+    /** 黑板 **/
+    private BlackBoard board;
 
     @Override
     public final Status tick() {

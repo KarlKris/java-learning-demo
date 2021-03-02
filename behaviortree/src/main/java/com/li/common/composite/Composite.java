@@ -10,11 +10,6 @@ public interface Composite extends Behaviour {
 
 
     /**
-     * 添加子行为
-     **/
-    void addChild(Behaviour behaviour);
-
-    /**
      * 移除子行为
      **/
     void removeChild(Behaviour behaviour);

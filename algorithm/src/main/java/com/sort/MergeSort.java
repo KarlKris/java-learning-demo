@@ -1,6 +1,6 @@
 package com.sort;
 
-import com.util.ArrayPrintln;
+import common.ArrayUtils;
 
 //分治法--归并排序
 /*
@@ -63,10 +63,10 @@ public class MergeSort {
 
 
     public static void main(String[] args) {
-        int a[] = ArrayPrintln.randomArray();
-        ArrayPrintln.Array_Println(a);
+        int a[] = ArrayUtils.randomArray(20);
+        ArrayUtils.Array_Println(a);
 
-        ArrayPrintln.Array_Println(merge_Sort(a, 0, a.length - 1));
+        ArrayUtils.Array_Println(merge_Sort(a, 0, a.length - 1));
 
     }
 

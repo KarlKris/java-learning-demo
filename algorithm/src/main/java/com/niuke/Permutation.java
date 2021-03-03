@@ -1,9 +1,7 @@
 package com.niuke;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @Description 输入一个字符串, 按字典序打印出该字符串中字符的所有排列

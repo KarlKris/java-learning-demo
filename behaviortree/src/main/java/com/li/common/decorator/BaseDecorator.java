@@ -1,4 +1,4 @@
-package com.li.common.decoraotr;
+package com.li.common.decorator;
 
 import com.li.common.behaviour.BaseBehaviour;
 import com.li.common.behaviour.Behaviour;
@@ -10,10 +10,10 @@ import com.li.common.behaviour.Behaviour;
  **/
 public abstract class BaseDecorator extends BaseBehaviour implements Decorator {
 
-    private Behaviour behaviour;
+    protected Behaviour behaviour;
 
-    public void setBehaviour(Behaviour behaviour) {
+    @Override
+    public void addChild(Behaviour behaviour) {
         this.behaviour = behaviour;
     }
-
 }

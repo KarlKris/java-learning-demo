@@ -5,11 +5,11 @@ import com.li.common.condition.BaseCondition;
 import com.li.common.status.Status;
 
 /**
- * @Description 是否看见敌人
+ * @Description 自身血量是否健康
  * @Author li-yuanwen
- * @Date 2021/3/1 16:57
+ * @Date 2021/3/4 20:24
  */
-public class ConditionIsSeeEnemy extends BaseCondition {
+public class ConditionIsHealthLow extends BaseCondition {
 
     @Override
     public boolean valid() {
@@ -21,12 +21,10 @@ public class ConditionIsSeeEnemy extends BaseCondition {
     public Status update() {
 
         if (valid()) {
-            System.out.println("ConditionIsSeeEnemy");
+            System.out.println("ConditionIsHealthLow");
             return Status.SUCCESS;
         }
-        System.out.println("ConditionIsNotSeeEnemy");
+        System.out.println("ConditionIsNotHealthLow");
         return Status.FAILURE;
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.li.common.decoraotr;
+package com.li.common.decorator;
 
 import com.li.common.behaviour.Behaviour;
 

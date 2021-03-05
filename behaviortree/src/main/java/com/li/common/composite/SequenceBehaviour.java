@@ -30,7 +30,7 @@ public class SequenceBehaviour extends BaseComposite {
             }
 
             if (!iterator.hasNext()) {
-                return Status.FAILURE;
+                return Status.SUCCESS;
             }
         }
     }

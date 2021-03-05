@@ -4,6 +4,7 @@ import com.li.common.behaviour.BaseBehaviour;
 import com.li.common.behaviour.Behaviour;
 import com.li.common.status.Status;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  **/
 public abstract class BaseComposite extends BaseBehaviour implements Composite {
 
-    private List<Behaviour> children;
+    private List<Behaviour> children = new ArrayList<>();
 
     @Override
     public void onInitialize() {

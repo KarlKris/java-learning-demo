@@ -31,4 +31,7 @@ public interface Behaviour {
      * 添加子节点
      **/
     void addChild(Behaviour behaviour);
+
+    /** 获取节点状态 **/
+    Status getStatus();
 }

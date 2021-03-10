@@ -1,3 +1,5 @@
+import equal.EqualModel;
+
 /**
  * @Description 杂测试类
  * @Author li-yuanwen
@@ -19,6 +21,12 @@ public class Main {
 
         System.out.println(a);
         System.out.println(b);
+
+        EqualModel tom = new EqualModel(17);
+        EqualModel model = new EqualModel(18);
+        System.out.println(tom == model);
+        System.out.println(tom.equals(model));
+
     }
 
 

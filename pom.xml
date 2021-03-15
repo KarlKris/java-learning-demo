@@ -18,6 +18,7 @@
         <module>algorithm</module>
         <module>fsm</module>
         <module>behaviortree</module>
+        <module>zookeeper</module>
     </modules>
 
     <properties>

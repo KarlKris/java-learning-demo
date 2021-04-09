@@ -8,7 +8,7 @@ import lombok.Getter;
  * @Description: 反射获取的用户类
  **/
 @Getter
-public class User implements IUser{
+public class User implements IUser {
 
     private String name;
 

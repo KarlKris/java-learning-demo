@@ -8,6 +8,7 @@
     <artifactId>java-learning-demo</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
+
     <modules>
         <module>design-pattern</module>
         <module>concurrency</module>
@@ -19,6 +20,8 @@
         <module>fsm</module>
         <module>behaviortree</module>
         <module>zookeeper</module>
+        <module>spring</module>
+        <module>redis</module>
     </modules>
 
     <properties>

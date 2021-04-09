@@ -1,12 +1,14 @@
 package com.algorithm;
 
-import cn.hutool.core.collection.BoundedPriorityQueue;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.model.Point;
 import lombok.Setter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * @Description A*寻路算法
@@ -80,6 +82,17 @@ public class AStar {
         queue.add(startPoint);
 
         return doPathFinding(queue, new ArrayList<>(), startX, startY, destX, destY);
+    }
+
+    public void randomObstacles(int num) {
+        if (num + obstacles.size() > x * y - 2) {
+            throw new UnsupportedOperationException("obstacles num more than total point");
+        }
+
+        for (int i = 0; i < num; i++) {
+            obstacles.add(new Point(RandomUtil.randomInt(x), RandomUtil.randomInt(y)));
+        }
+
     }
 
 
@@ -174,7 +187,7 @@ public class AStar {
     private double calHn(int x, int y, int destX, int destY) {
         int disX = Math.abs(x - destX);
         int disY = Math.abs(y - destY);
-        return disX + disY + ((Math.sqrt(2) - 1 ) * Math.min(disX, disY));
+        return disX + disY + ((Math.sqrt(2) - 1) * Math.min(disX, disY));
     }
 
 
@@ -205,13 +218,34 @@ public class AStar {
 
     }
 
+    private static List<Point> buildObstacles(int y) {
+        List<Point> points = new ArrayList<>(9);
+        boolean has = false;
+        for (int i = 0; i < 10; i++) {
+            if (!has && RandomUtil.randomBoolean()) {
+                has = true;
+                continue;
+            }
+            points.add(new Point(i, y));
+        }
+
+        return points;
+    }
+
     public static void main(String[] args) {
-        AStar star = new AStar(10, 10, null);
+        AStar star = new AStar(10, 10, buildObstacles(8));
+//        star.randomObstacles(10);
+        StringBuilder sb = new StringBuilder();
+        for (Point point : star.obstacles) {
+            sb.append("[").append(point.getX()).append(",").append(point.getY()).append("] ");
+        }
+
+        System.out.println(sb.toString());
         long start = System.currentTimeMillis();
         List<Point> points = star.pathFinding(0, 0, 9, 9);
         long time = System.currentTimeMillis() - start;
         if (!CollectionUtil.isEmpty(points)) {
-            StringBuilder sb = new StringBuilder();
+            sb = new StringBuilder();
             sb.append("共计").append(points.size()).append("步   耗时：").append(time).append("   ");
             for (Point point : points) {
                 sb.append("[").append(point.getX()).append(",").append(point.getY()).append("] ");

@@ -2,8 +2,6 @@ package equal;
 
 import lombok.Data;
 
-import java.util.Objects;
-
 /**
  * @Auther: li-yuanwen
  * @Date: 2021/3/8 22:34

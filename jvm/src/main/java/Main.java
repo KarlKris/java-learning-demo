@@ -27,6 +27,27 @@ public class Main {
         System.out.println(tom == model);
         System.out.println(tom.equals(model));
 
+        Integer i = null;
+        Integer j = null;
+        System.out.println(i==j);
+
+        Integer z = 5;
+        Integer x = 5;
+        int c = 5;
+        System.out.println(z==x);
+        System.out.println(z==c);
+
+        System.out.println(get());
+    }
+
+    public static Person get() {
+        Person a = new Person("test", 1);;
+        try{
+            a.setAge(2);
+            return a;
+        }finally {
+            a.setAge(3);
+        }
     }
 
 
@@ -35,6 +56,10 @@ public class Main {
         private String name;
         Person(String name, int age) {
             this.name = name;
+            this.age = age;
+        }
+
+        public void setAge(int age) {
             this.age = age;
         }
 

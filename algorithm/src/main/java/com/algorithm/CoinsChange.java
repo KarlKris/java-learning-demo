@@ -38,6 +38,35 @@ public class CoinsChange {
         }
     }
 
+    public static void makeChange(int[] values, int money) {
+        int[] know = new int[money + 1];
+        int num = doMakeChange(values, money, know);
+        System.out.println("面值为 " + money + " 的最小硬币数 : " + num);
+    }
+
+    public static int doMakeChange(int[] values, int money, int[] know) {
+        if (money <= 0) {
+            return 0;
+        }
+        int num;
+        if ((num = know[money] )!= 0) {
+            return num;
+        }
+
+        num = money ;
+        for (int i : values) {
+            int sub = money - i;
+            if (sub >= 0) {
+                num = Math.min(num, doMakeChange(values, sub, know) + 1);
+            }
+        }
+
+        know[money] = num;
+
+        return num;
+
+    }
+
     public static void main(String[] args) {
 
         // 硬币面值预先已经按降序排列
@@ -48,5 +77,9 @@ public class CoinsChange {
         int[] coinsUsed = new int[money + 1];
 
         makeChange(coinValue, coinValue.length, money, coinsUsed);
+
+        System.out.println("-----------------------------------------");
+
+        makeChange(coinValue, money);
     }
 }

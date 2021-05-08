@@ -22,6 +22,7 @@
         <module>zookeeper</module>
         <module>spring</module>
         <module>redis</module>
+        <module>hibernate</module>
     </modules>
 
     <properties>

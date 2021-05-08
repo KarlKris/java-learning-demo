@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence">
+
+    <persistence-unit name="HelloWorldPU">
+        <jta-data-source>myDS</jta-data-source>
+        <class>com.li.model.Message</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property
+                    name="javax.persistence.schema-generation.database.action"
+                    value="drop-and-create"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -41,7 +41,8 @@ public class BlackBoard {
     }
 
     public List<Event> getEvents() {
-        return events.getOrDefault(time, Collections.emptyList());
+        List<Event> temp;
+        return (temp = events.remove(time)) == null ? Collections.emptyList() : temp;
     }
 
     public void post(Event event) {

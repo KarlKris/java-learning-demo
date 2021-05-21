@@ -18,16 +18,23 @@ public enum Direction {
     RIGHT,
 
     ;
+
     public static Direction randomDirection() {
         Direction[] values = values();
         int length = values.length;
         int randomInt = RandomUtil.randomInt(length);
+//        return values[randomInt];
 
-        return values[randomInt];
+        return RandomUtil.randomBoolean() ? LEFT : RIGHT;
     }
 
-
     public static Direction randomDirectionUnless(Direction direction) {
+        if (direction == LEFT) {
+            return RIGHT;
+        }
+        if (direction == RIGHT) {
+            return LEFT;
+        }
         Direction[] values = values();
         int length = values.length;
         int randomInt = RandomUtil.randomInt(length);

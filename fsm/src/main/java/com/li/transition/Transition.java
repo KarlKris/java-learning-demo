@@ -23,6 +23,12 @@ public abstract class Transition<B> {
     /** 触发后状态 **/
     private State nextState;
 
+    public Transition(String eventCode, State currentState, State nextState) {
+        this.eventCode = eventCode;
+        this.currentState = currentState;
+        this.nextState = nextState;
+    }
+
     public State execute(Event<B> event, GameMap map, BlackBoard blackBoard) {
         if (doExecute(event.getOwnerId(), event.getTime(), event.getBody(), map, blackBoard)) {
             return nextState;

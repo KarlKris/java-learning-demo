@@ -33,43 +33,67 @@ public class ShouWeiDiGong {
 
 
     private void init() {
+        List<Point> points = new ArrayList<>(4);
+        points.add(new Point(47, 50));
+        points.add(new Point(51, 50));
+        points.add(new Point(50, 47));
+        points.add(new Point(50, 51));
+
         blackBoard = new BlackBoard();
-        map = new ShouWeiDiGongMap(100, 100);
+        map = new ShouWeiDiGongMap(100, 100, points);
+
+        System.out.println("-----------------------Game地图--------------------------");
+        System.out.println(map);
 
         List<Event> initEvents = new ArrayList<>(6);
         int id = 1;
 
         int guardNum = 4;
         ais = new HashMap<>();
-        for (int i = 0; i < guardNum / 2; i++) {
-            Guard guard = new Guard(id++, StateConstant.PATROL, new Point((i + 1) * 30, 30), blackBoard, map);
-            ais.put(guard.getId(), guard);
-            Event<PatrolInfo> event = new Event<>(EventConstant.PATROL,
-                    new PatrolInfo(Direction.randomDirection(), guard), guard.getId(), 1);
+//        for (int i = 0; i < guardNum / 2; i++) {
+//            Guard guard = new Guard(id++, StateConstant.PATROL, new Point((i + 1) * 30, 30), blackBoard, map);
+//            ais.put(guard.getId(), guard);
+//            Event<PatrolInfo> event = new Event<>(EventConstant.PATROL,
+//                    new PatrolInfo(Direction.randomDirection(), guard), guard.getId(), 1);
+//
+//            initEvents.add(event);
+//        }
+//        for (int i = guardNum / 2; i < guardNum; i++) {
+//            Guard guard = new Guard(id++, StateConstant.PATROL, new Point((i - 2) * 30, 60), blackBoard, map);
+//            ais.put(guard.getId(), guard);
+//            Event<PatrolInfo> event = new Event<>(EventConstant.PATROL,
+//                    new PatrolInfo(Direction.randomDirection(), guard), guard.getId(), 1);
+//
+//            initEvents.add(event);
+//        }
+//
+//        Thieves thieves1 = new Thieves(id++, StateConstant.SEARCH, new Point(0, 0), blackBoard, map);
+//        Thieves thieves2 = new Thieves(id++, StateConstant.SEARCH, new Point(99, 99), blackBoard, map);
+//
+//        ais.put(thieves1.getId(), thieves1);
+//        ais.put(thieves2.getId(), thieves2);
+//
+//        Event<SearchInfo> event1 = new Event<>(EventConstant.SEARCH
+//                , new SearchInfo(map.pathFind(thieves1.getCurPoint()), 0), thieves1.getId(), 1);
+//        initEvents.add(event1);
+//        Event<SearchInfo> event2 = new Event<>(EventConstant.SEARCH
+//                , new SearchInfo(map.pathFind(thieves2.getCurPoint()), 0), thieves2.getId(), 1);
+//        initEvents.add(event2);
 
-            initEvents.add(event);
-        }
-        for (int i = guardNum / 2; i < guardNum; i++) {
-            Guard guard = new Guard(id++, StateConstant.PATROL, new Point((i + 1) * 30, 60), blackBoard, map);
-            ais.put(guard.getId(), guard);
-            Event<PatrolInfo> event = new Event<>(EventConstant.PATROL,
-                    new PatrolInfo(Direction.randomDirection(), guard), guard.getId(), 1);
-
-            initEvents.add(event);
-        }
-
-        Thieves thieves1 = new Thieves(id++, StateConstant.SEARCH, new Point(0, 0), blackBoard, map);
-        Thieves thieves2 = new Thieves(id++, StateConstant.SEARCH, new Point(99, 99), blackBoard, map);
-
-        ais.put(thieves1.getId(), thieves1);
-        ais.put(thieves2.getId(), thieves2);
-
+        Thieves thieves = new Thieves(id++, StateConstant.SEARCH, new Point(0, 0), blackBoard, map);
+        ais.put(thieves.getId(), thieves);
         Event<SearchInfo> event1 = new Event<>(EventConstant.SEARCH
-                , new SearchInfo(map.pathFind(thieves1.getCurPoint()), 0), thieves1.getId(), 1);
+                , new SearchInfo(map.pathFind(thieves.getCurPoint()), 0, thieves), thieves.getId(), 1);
         initEvents.add(event1);
-        Event<SearchInfo> event2 = new Event<>(EventConstant.SEARCH
-                , new SearchInfo(map.pathFind(thieves2.getCurPoint()), 0), thieves2.getId(), 1);
-        initEvents.add(event2);
+
+        Guard guard = new Guard(id++, StateConstant.PATROL, new Point(50, 50), blackBoard, map);
+        ais.put(guard.getId(), guard);
+        Event<PatrolInfo> event = new Event<>(EventConstant.PATROL,
+                new PatrolInfo(Direction.randomDirection(), guard), guard.getId(), 1);
+
+        initEvents.add(event);
+
+        blackBoard.initEvent(initEvents);
 
     }
 
@@ -77,6 +101,7 @@ public class ShouWeiDiGong {
         init();
         while (!blackBoard.isFinish()) {
             for (Event event : blackBoard.getEvents()) {
+                System.out.println("------------------------------------------------------");
                 ShouWeiStateMathine mathine = ais.get(event.getOwnerId());
                 mathine.execute(event);
             }

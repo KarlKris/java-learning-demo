@@ -3,6 +3,7 @@ package com.li.state;
 import com.li.transition.Transition;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,15 @@ public class State {
 
     /** 当前状态可以执行的动作 **/
     private List<Transition> transitions;
+
+    public State(StateConstant state) {
+        this.state = state;
+        this.transitions = new ArrayList<>(2);
+    }
+
+    public void addTransition(Transition transition) {
+        this.transitions.add(transition);
+    }
 
     @Override
     public boolean equals(Object o) {

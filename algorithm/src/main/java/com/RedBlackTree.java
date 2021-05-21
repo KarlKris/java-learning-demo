@@ -7,7 +7,7 @@ import com.utils.TreePrintUtil;
 import java.util.HashSet;
 import java.util.Set;
 
-//红黑树 0false 红色    1 true 黑色
+//红黑树 0 false 红色    1 true 黑色
 //插入操作所面临的5个情形
 //情形 1: 如果当前节点是根结点，为满足性质 2，所以直接把此结点 z 涂为黑色
 //情形 2: 如果当前结点的父结点是黑色，由于不违反性质 2 和性质 4，红黑树没有被破坏，所以此时也是什么也不做
@@ -91,7 +91,6 @@ public class RedBlackTree {
         }
         root = temp;
         insertTreeNode(tn);
-        return;
     }
 
     //解决插入后出现的5种情形
@@ -216,8 +215,6 @@ public class RedBlackTree {
             //调用方法
             deleteNode(max);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            System.out.println("......................");
             e.printStackTrace();
         }
     }
@@ -247,9 +244,6 @@ public class RedBlackTree {
                 //红色
                 //则把该节点便黑色即可
                 leftChild.setColor(BlACK);
-            } else {
-                //黑色
-
             }
         }
     }
@@ -391,9 +385,6 @@ public class RedBlackTree {
 
     public static void main(String[] args) {
         Set<Integer> set = new HashSet<>();
-//		for(int i=0;i<10;i++){
-//			set.add((int)(Math.random()*100)+1);
-//		}
         set.add(48);
         set.add(5);
         set.add(54);

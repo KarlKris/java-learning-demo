@@ -1,16 +1,13 @@
 package com.li.map;
 
-import cn.hutool.core.util.RandomUtil;
+import com.li.module.shouweidigong.ShouWeiDiGongConstants;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Set;
 
 /**
  * @author li-yuanwen
@@ -18,6 +15,7 @@ import java.util.Set;
  */
 public class GameMap {
 
+    private static byte OBSTACLE = -1;
 
     /** 地图长度 **/
     private int x;
@@ -25,8 +23,7 @@ public class GameMap {
     /** 地图宽度 **/
     private int y;
 
-    /** 障碍物 **/
-    private Map<Integer, Set<Integer>> obstacles;
+    private byte[][] map;
 
     public GameMap(int x, int y, List<Point> obstacles) {
         this(x, y);
@@ -37,35 +34,51 @@ public class GameMap {
     public GameMap(int x, int y) {
         this.x = x;
         this.y = y;
+
+        map = new byte[x][y];
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                map[i][j] = ShouWeiDiGongConstants.COMMON_ID;
+            }
+        }
+    }
+
+    public void updatePoint(Point point, byte id) {
+        checkPoint(point);
+        this.map[point.getX()][point.getY()] = id;
+    }
+
+    public boolean hasByte(Point point, byte id) {
+        checkPoint(point);
+        return this.map[point.getX()][point.getY()] == id;
     }
 
     private void checkAndUpdateObstacles(List<Point> obstacles) {
         if (obstacles == null) {
-            this.obstacles = new HashMap<>(0);
             return;
         }
-        Map<Integer, Set<Integer>> temp = new HashMap<>(obstacles.size());
         for (Point point : obstacles) {
-            int pointX = point.getX();
-            if (pointX < 0) {
-                throw new IndexOutOfBoundsException("obstacle point x less than 0 ");
-            }
-            if (pointX >= x) {
-                throw new IndexOutOfBoundsException("obstacle point x more than " + x);
-            }
-
-            int pointY = point.getY();
-            if (pointY < 0) {
-                throw new IndexOutOfBoundsException("obstacle point y less than 0 ");
-            }
-            if (pointY >= y) {
-                throw new IndexOutOfBoundsException("obstacle point y more than " + y);
-            }
-
-            Set<Integer> ys = temp.computeIfAbsent(pointX, k -> new HashSet<>(2));
-            ys.add(pointY);
+            checkPoint(point);
+            this.map[point.getX()][point.getY()] = OBSTACLE;
         }
-        this.obstacles = temp;
+    }
+
+    private void checkPoint(Point point) {
+        int pointX = point.getX();
+        if (pointX < 0) {
+            throw new IndexOutOfBoundsException("obstacle point x less than 0 ");
+        }
+        if (pointX >= x) {
+            throw new IndexOutOfBoundsException("obstacle point x more than " + x);
+        }
+
+        int pointY = point.getY();
+        if (pointY < 0) {
+            throw new IndexOutOfBoundsException("obstacle point y less than 0 ");
+        }
+        if (pointY >= y) {
+            throw new IndexOutOfBoundsException("obstacle point y more than " + y);
+        }
     }
 
     public List<Point> pathFinding(int startX, int startY, int destX, int destY) {
@@ -90,19 +103,6 @@ public class GameMap {
         return doPathFinding(queue, new ArrayList<>(), startX, startY, destX, destY);
     }
 
-    public void randomObstacles(int num) {
-        if (num + obstacles.size() > x * y - 2) {
-            throw new UnsupportedOperationException("obstacles num more than total point");
-        }
-
-        for (int i = 0; i < num; i++) {
-            Set<Integer> ys = obstacles.computeIfAbsent(RandomUtil.randomInt(x), k -> new HashSet<>(2));
-            ys.add(RandomUtil.randomInt(y));
-        }
-
-    }
-
-
     private List<Point> doPathFinding(PriorityQueue<LinkedPoint> queue, List<Point> closeList
             , int startX, int startY, int destX, int destY) {
         if (queue.isEmpty()) {
@@ -119,6 +119,7 @@ public class GameMap {
                 path.add(new Point(point.getX(), point.getY()));
                 point = point.parent;
             }
+            Collections.reverse(path);
             return path;
         }
 
@@ -164,14 +165,12 @@ public class GameMap {
         return doPathFinding(queue, closeList, startX, startY, destX, destY);
     }
 
-
     private boolean isValid(int x, int y) {
         return (x >= 0 && x < this.x) && (y >= 0 && y < this.y);
     }
 
     private boolean isObstacle(int x, int y) {
-        Set<Integer> temp;
-        return (temp = this.obstacles.get(x)) != null && temp.contains(y);
+        return this.map[x][y] == OBSTACLE;
     }
 
     /**
@@ -198,9 +197,27 @@ public class GameMap {
         return disX + disY + ((Math.sqrt(2) - 1) * Math.min(disX, disY));
     }
 
-
     private int calPointSize() {
         return x * y;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < x; i++) {
+            sb.append("[");
+            for (int j = 0; j < y; j++) {
+                sb.append(map[i][j]);
+                if (j != y - 1) {
+                    sb.append(",");
+                }
+            }
+            sb.append("],\n");
+        }
+        sb.append("]");
+
+        return sb.toString();
     }
 
     @Setter
@@ -224,19 +241,5 @@ public class GameMap {
             this.parent = parent;
         }
 
-    }
-
-    private static List<Point> buildObstacles(int y) {
-        List<Point> points = new ArrayList<>(9);
-        boolean has = false;
-        for (int i = 0; i < 10; i++) {
-            if (!has && RandomUtil.randomBoolean()) {
-                has = true;
-                continue;
-            }
-            points.add(new Point(i, y));
-        }
-
-        return points;
     }
 }

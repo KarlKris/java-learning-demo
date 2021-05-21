@@ -1,5 +1,12 @@
 import equal.EqualModel;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * @Description 杂测试类
  * @Author li-yuanwen
@@ -38,6 +45,13 @@ public class Main {
         System.out.println(z==c);
 
         System.out.println(get());
+
+        Collection<?>[] collections =
+                {new HashSet<String>(), new ArrayList<String>(), new HashMap<String, String>().values()};
+        Super subToSuper = new Sub();
+        for(Collection<?> collection: collections) {
+            System.out.println(subToSuper.getType(collection));
+        }
     }
 
     public static Person get() {
@@ -70,5 +84,29 @@ public class Main {
                     ", name='" + name + '\'' +
                     '}';
         }
+    }
+
+
+    // 静态方法是不会被重写的，调用时属于静态分配决定调用方法
+    abstract static class Super {
+        public static String getType(Collection<?> collection) {
+            return "Super:collection";
+        }
+        public static String getType(List<?> list) {
+            return "Super:list";
+        }
+        public String getType(ArrayList<?> list) {
+            return "Super:arrayList";
+        }
+        public static String getType(Set<?> set) {
+            return "Super:set";
+        }
+        public String getType(HashSet<?> set) {
+            return "Super:hashSet";
+        }
+    }
+    static class Sub extends Super {
+        public static String getType(Collection<?> collection) {
+            return "Sub"; }
     }
 }

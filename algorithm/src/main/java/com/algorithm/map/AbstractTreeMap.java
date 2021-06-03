@@ -22,6 +22,12 @@ public abstract class AbstractTreeMap<K, V> implements IndexMap<K, V> {
         V getValue();
 
         /**
+         * 设置新值
+         * @param v 新值
+         */
+        void setValue(V v);
+
+        /**
          * 获取左子树
          * @return 左子树
          */
@@ -50,6 +56,10 @@ public abstract class AbstractTreeMap<K, V> implements IndexMap<K, V> {
          */
         boolean isRed();
 
+        /**
+         * 更改节点颜色
+         */
+        void changeColor(boolean red);
 
 
     }

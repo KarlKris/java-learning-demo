@@ -14,17 +14,13 @@ public class MaxQueue<I extends Comparable<I>> extends AbstractQueue<I> {
     }
 
     @Override
-    public I get() {
-        return items[1];
+    protected boolean compare(int i, int j) {
+        return less(i, j);
     }
 
-    @Override
-    public I del() {
-        I i = items[1];
-        exch(1, size--);
-        items[size + 1] = null;
-        sink(1);
-        return i;
+    private boolean less(int i, int j) {
+        return get(i).compareTo(get(j)) < 0;
     }
+
 
 }

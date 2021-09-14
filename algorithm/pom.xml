@@ -11,11 +11,27 @@
 
     <artifactId>algorithm</artifactId>
 
+    <properties>
+        <jmh.version>1.19</jmh.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.li</groupId>
             <artifactId>utils</artifactId>
             <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

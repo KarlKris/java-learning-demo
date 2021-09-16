@@ -47,8 +47,8 @@ public class JavassistProxyFactory {
         ctClass.addField(CtField.make("public " + name + " real = new " + name + "();", ctClass));
 
         // 添加方法
-        ctClass.addMethod(CtNewMethod.make("public String getSex() {"
-        + " return \"JavassistDefineClass:\" + real.getSex(); }", ctClass));
+//        ctClass.addMethod(CtNewMethod.make("public String getSex() {"
+//        + " return \"JavassistDefineClass:\" + real.getSex(); }", ctClass));
 
         Class<?> aClass = ctClass.toClass();
 

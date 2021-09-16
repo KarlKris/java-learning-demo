@@ -19,10 +19,6 @@ public class JavassistProxyHandler implements MethodHandler {
 
     @Override
     public Object invoke(Object o, Method method, Method method1, Object[] objects) throws Throwable {
-
-        System.out.println("Javassist Proxy :" + method.getName());
-
-
         return method.invoke(target, objects);
     }
 }

@@ -24,11 +24,6 @@ public class CglibProxy implements MethodInterceptor {
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-
-
-        System.out.println("CGLIB 动态代理 : " + method.getName());
-        // 这样会造成死循环
-//        return method.invoke(o, objects);
         return methodProxy.invokeSuper(o, objects);
     }
 }

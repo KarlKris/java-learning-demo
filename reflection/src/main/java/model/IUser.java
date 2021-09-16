@@ -8,4 +8,6 @@ package model;
 public interface IUser {
 
     void setSex(String sex);
+
+    String getSex();
 }

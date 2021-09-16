@@ -22,7 +22,7 @@ public class DisruptorMain {
         int ringBufferSize = 2; // ringBufferSize大小一定要是2的N次方
 
         Disruptor<Event<?>> disruptor = new Disruptor<Event<?>>(new DisruptorEventFactory(), ringBufferSize, threadFactory
-                , ProducerType.SINGLE, new YieldingWaitStrategy());
+                , ProducerType.SINGLE, new  YieldingWaitStrategy());
         DisruptorHandler[] handlers = new DisruptorHandler[2];
         for (int i = 0; i < 2; i++) {
             handlers[i] = new DisruptorHandler();

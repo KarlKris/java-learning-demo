@@ -18,9 +18,10 @@ public interface RankList {
 
     /**
      * 更新排行榜
-     * @param rankItem 更新元素
+     * @param playerId 玩家id
+     * @param curVal 当前排行榜值
      */
-    void update(RankItem rankItem);
+    void update(long playerId, long curVal);
 
 
     /**

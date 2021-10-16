@@ -6,7 +6,7 @@ package com.li.battle.skill.config;
  */
 public class SkillSetting {
 
-    /** 技能标识 **/
+    /** 技能唯一标识 **/
     private int id;
 
     /** 技能类型 **/

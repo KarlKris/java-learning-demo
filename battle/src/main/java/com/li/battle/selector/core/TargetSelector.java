@@ -1,4 +1,4 @@
-package com.li.battle.selector;
+package com.li.battle.selector.core;
 
 /**
  * 目标选择器

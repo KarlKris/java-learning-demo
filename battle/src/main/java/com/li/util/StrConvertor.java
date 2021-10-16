@@ -4,7 +4,7 @@ package com.li.util;
  * 表配置属性转换器
  * @author li-yuanwen
  */
-public interface SettingConvertor<T> {
+public interface StrConvertor<T> {
 
     /**
      * 将字符串按规则转换成指定对象

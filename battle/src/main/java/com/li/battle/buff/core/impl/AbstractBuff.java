@@ -27,13 +27,28 @@ public abstract class AbstractBuff implements Buff {
     /** buff等级 **/
     protected int level;
 
-    /** buff失效时间(时长) **/
-    protected long expire;
+    /** 下一次触发间隔效果的回合数 **/
+    protected long nextRound;
+
+    /** buff失效回合数=创建时回合数 + (buff时长(毫秒) / 回合执行间隔时长(毫秒)) **/
+    protected long expireRound;
 
     /** buff创建时的一些相关上下文数据 **/
     protected BuffCreateContext context;
 
+    @Override
+    public void expire() {
+        expireRound = -1;
+    }
 
+    /** buff是否失效 **/
+    @Override
+    public boolean expire(long curRound) {
+        return curRound >= expireRound;
+    }
 
-
+    @Override
+    public long getNextRound() {
+        return nextRound;
+    }
 }

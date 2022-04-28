@@ -1,4 +1,4 @@
-package com.li.battle.core.unit;
+package com.li.battle.core.unit.model;
 
 /**
  * 战斗属性

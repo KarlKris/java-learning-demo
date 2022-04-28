@@ -1,30 +1,25 @@
 package com.li.battle.skill.config;
 
+import com.li.battle.skill.model.SkillType;
+
 /**
- * 技能配置表
+ * 技能配置接口
  * @author li-yuanwen
+ * @date 2021/10/19
  */
-public class SkillSetting {
+public interface SkillSetting {
 
-    /** 技能唯一标识 **/
-    private int id;
 
-    /** 技能类型 **/
-    private byte type;
+    /**
+     * 获取技能id
+     * @return 技能id
+     */
+    int getId();
 
-    /** 目标选择表#id **/
-    private int selectId;
-
-    /** 效果表#id **/
-    private int effectId;
-
-    /** 前摇时长(毫秒) **/
-    private int castPoint;
-
-    /** 后摇时长(毫秒) **/
-    private int backPoint;
-
-    /** 技能CD(毫秒) **/
-    private int cd;
+    /**
+     * 获取技能类型
+     * @return 技能类型
+     */
+    SkillType getType();
 
 }

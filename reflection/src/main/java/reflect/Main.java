@@ -116,6 +116,9 @@ public class Main {
         System.out.println("----------------------------------------------");
 
 
+        String code = "微信平台yyds";
+        System.out.println("微信平台YyDs".equalsIgnoreCase(code));
+
 
 
     }

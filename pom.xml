@@ -24,6 +24,7 @@
         <module>redis</module>
         <module>hibernate</module>
         <module>battle</module>
+        <module>game-ai</module>
     </modules>
 
     <properties>

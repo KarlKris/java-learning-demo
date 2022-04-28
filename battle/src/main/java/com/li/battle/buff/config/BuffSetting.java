@@ -15,5 +15,7 @@ public class BuffSetting {
     /** 免疫buff_tag **/
     private byte immuneTag;
 
+    /** buff效果--效果表#id **/
+    private int effectId;
 
 }

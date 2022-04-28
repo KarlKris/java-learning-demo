@@ -7,6 +7,10 @@ package com.li.battle.selector.core;
 public interface TargetSelector {
 
 
-
+    /**
+     * 选择目标
+     * @return 目标
+     */
+    BattleTarget select();
 
 }

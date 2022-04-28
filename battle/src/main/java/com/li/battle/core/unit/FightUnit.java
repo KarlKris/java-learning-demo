@@ -1,5 +1,9 @@
 package com.li.battle.core.unit;
 
+import com.li.battle.core.unit.model.Attribute;
+import com.li.battle.core.unit.model.FightUnitState;
+import com.li.battle.core.unit.model.FightUnitType;
+
 /**
  * 战斗单元对外接口
  * @author li-yuanwen
@@ -38,7 +42,6 @@ public interface FightUnit {
      * @return 战斗单元当前状态
      */
     FightUnitState getState();
-
 
     /**
      * 修改状态

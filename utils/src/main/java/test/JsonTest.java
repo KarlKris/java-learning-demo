@@ -22,6 +22,20 @@ import java.util.concurrent.*;
 public class JsonTest {
 
     public static void main(String[] args) throws InterruptedException {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(1,1);
+        map.put(2,2);
+        map.put(3,3);
+        map.put(4,4);
+        map.put(5,5);
+        for (int v : map.values()) {
+            System.out.println(v);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getValue());
+        }
+
         List<Integer> list = new ArrayList<Integer>();
         list.add(1);
         JavaBean bean = new JavaBean();

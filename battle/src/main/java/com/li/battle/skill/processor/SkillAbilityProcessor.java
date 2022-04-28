@@ -15,6 +15,9 @@ public interface SkillAbilityProcessor {
     /** 技能起手 **/
     void onAbilityStart();
 
+    /** 施法 **/
+    void spell();
+
     /** 结束 **/
     void finish();
 

@@ -1,6 +1,5 @@
 package com.rank.list;
 
-import com.rank.RankItem;
 
 import java.util.*;
 
@@ -290,7 +289,7 @@ public class SkipList<E extends Comparable<E>> {
 
 
     /** 跳表节点 **/
-    class SkipNode<E extends Comparable<E>> {
+    static class SkipNode<E extends Comparable<E>> {
 
         /** 节点数据 **/
         private E value;
@@ -309,7 +308,7 @@ public class SkipList<E extends Comparable<E>> {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        int total = 500000;
+        int total = 10;
         SkipList<Integer> list = new SkipList<>();
         long start = System.currentTimeMillis();
         for (int i = 0; i < total; i++) {

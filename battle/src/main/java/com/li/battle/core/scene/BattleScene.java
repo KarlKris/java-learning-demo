@@ -16,6 +16,18 @@ public interface BattleScene {
     long getSceneId();
 
     /**
+     * 获取回合间隔时长(毫秒)
+     * @return 回合间隔时长(毫秒)
+     */
+    int getRoundPeriod();
+
+    /**
+     * 获取场景当前回合数
+     * @return 场景当前回合数
+     */
+    long getSceneRound();
+
+    /**
      * 进入场景
      * @param unit 战斗单元
      * @return true 进入场景成功
@@ -27,7 +39,6 @@ public interface BattleScene {
      * @param unitId 战斗单元唯一标识
      */
     void leaveScene(long unitId);
-
 
     /**
      * 检查是否销毁场景,即场景将不再使用

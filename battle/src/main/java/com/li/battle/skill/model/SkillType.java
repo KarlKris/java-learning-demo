@@ -31,6 +31,7 @@ public enum SkillType {
 	}
 
 
+
 	/** 判断技能类型归属 **/
 	public static boolean belongTo(byte type, SkillType skillType) {
 		return (type & skillType.type) != 0;
